@@ -26,7 +26,7 @@ module "enterprise_scale" {
   custom_landing_zones = {
     "${var.root_id}-LandingZoneProd" = {
       display_name               = "LandingZonesProd"
-      parent_management_group_id = "${var.root_id}-landingZones"
+      parent_management_group_id = "${var.root_id}-landing-zones"
       subscription_ids           = []
       archetype_config = {
         archetype_id   = "customer_online"
@@ -43,7 +43,7 @@ module "enterprise_scale" {
     }
     "${var.root_id}-LandingZoneQA" = {
       display_name               = "LandingZonesQA"
-      parent_management_group_id = "${var.root_id}-landingZones"
+      parent_management_group_id = "${var.root_id}-landing-zones"
       subscription_ids           = []
       archetype_config = {
         archetype_id   = "customer_online"
@@ -59,8 +59,8 @@ module "enterprise_scale" {
       }  
     }
     "${var.root_id}-LandingZoneDev" = {
-      display_name               = "$LandingZonesDevTest"
-      parent_management_group_id = "${var.root_id}-landingZones"
+      display_name               = "LandingZonesDevTest"
+      parent_management_group_id = "${var.root_id}-landing-zones"
       subscription_ids           = []
       archetype_config = {
         archetype_id   = "customer_online"

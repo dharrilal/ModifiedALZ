@@ -22,31 +22,45 @@ module "enterprise_scale" {
   root_id        = var.root_id
   root_name      = var.root_name
   library_path   = "${path.root}/lib"
-
+  
   custom_landing_zones = {
     "${var.root_id}-LandingZoneProd" = {
-      display_name               = "${upper(var.root_id)} LandingZoneProd"
-      parent_management_group_id = "${var.root_id}-landing-zones"
+      display_name               = "LandingZonesProd"
+      parent_management_group_id = "${var.root_id}-landingZones"
       subscription_ids           = []
       archetype_config = {
         archetype_id   = "customer_online"
-        parameters     = {}
+        parameters     = {
+          Deny-Resource-Locations = {
+            listOfAllowedLocations = ["canadacentral","canadaeast",]
+          }
+          Deny-RSG-Locations = {
+            listOfAllowedLocations = ["canadacentral","canadaeast",]
+          }
+        }
         access_control = {}
       }
     }
     "${var.root_id}-LandingZoneQA" = {
-      display_name               = "${upper(var.root_id)} LandingZoneQA"
-      parent_management_group_id = "${var.root_id}-landing-zones"
+      display_name               = "LandingZonesQA"
+      parent_management_group_id = "${var.root_id}-landingZones"
       subscription_ids           = []
       archetype_config = {
         archetype_id   = "customer_online"
-        parameters     = {}
+        parameters     = {
+          Deny-Resource-Locations = {
+            listOfAllowedLocations = ["canadacentral","canadaeast",]
+          }
+          Deny-RSG-Locations = {
+            listOfAllowedLocations = ["canadacentral","canadaeast",]
+          }
+        }
         access_control = {}
       }  
     }
     "${var.root_id}-LandingZoneDev" = {
-      display_name               = "${upper(var.root_id)} LandingZoneDev"
-      parent_management_group_id = "${var.root_id}-landing-zones"
+      display_name               = "$LandingZonesDevTest"
+      parent_management_group_id = "${var.root_id}-landingZones"
       subscription_ids           = []
       archetype_config = {
         archetype_id   = "customer_online"
@@ -62,5 +76,9 @@ module "enterprise_scale" {
       }
     }
   }
+
+  deploy_management_resources    = var.deploy_management_resources
+  subscription_id_management     = data.azurerm_client_config.core.subscription_id
+  configure_management_resources = local.configure_management_resources
 
 }

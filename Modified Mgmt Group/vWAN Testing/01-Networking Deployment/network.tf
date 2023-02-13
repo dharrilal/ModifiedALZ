@@ -1,7 +1,7 @@
 # Networks 
-# Resource Groups vWAN - Region 1
+# Resource Groups - Region 1
 resource "azurerm_resource_group" "region1-rg1" {
-  name     = "${avar.lab-nme}-${var.region1}-vnet-rg-01"
+  name     = "rg-${var.app-name}-vnet-001"
   location = var.region1
   tags = {
     Environment = var.environment_tag
@@ -10,7 +10,7 @@ resource "azurerm_resource_group" "region1-rg1" {
 }
 # Region 1 VNET 1
 resource "azurerm_virtual_network" "region1-vnet1" {
-  name                = "${var.region1}-vnet-01"
+  name                = "vnet-${var.environment_tag}-001"
   location            = var.region1
   resource_group_name = azurerm_resource_group.region1-rg1.name
   address_space       = [var.region1-vnet1-address-space]
@@ -19,7 +19,7 @@ resource "azurerm_virtual_network" "region1-vnet1" {
   }
 }
 resource "azurerm_subnet" "region1-vnet1-snet1" {
-  name                 = "${var.region1}-vnet-01-snet-01"
+  name                 = "snet-vnet-001-${var.environment_tag}-001"
   resource_group_name  = azurerm_resource_group.region1-rg1.name
   virtual_network_name = azurerm_virtual_network.region1-vnet1.name
   address_prefixes     = [var.region1-vnet1-snet1-range]
@@ -27,7 +27,7 @@ resource "azurerm_subnet" "region1-vnet1-snet1" {
 
 # NSGs
 resource "azurerm_network_security_group" "region1-nsg" {
-  name                = "${var.region1}-nsg-01"
+  name                = "nsg-${var.environment_tag}-001"
   location            = var.region1
   resource_group_name = azurerm_resource_group.region1-rg1.name
 

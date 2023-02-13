@@ -1,8 +1,8 @@
 # Core Variables
-lab-name                  = "oag"
+app-name                  = "prod-spoke"
 environment_tag           = "prod"
 region1                   = "canadacentral"
-subscription_id = ""
+subscription_id           = ""
 
 # Networking
 region1-vnet1-address-space = "10.10.8.0/21"

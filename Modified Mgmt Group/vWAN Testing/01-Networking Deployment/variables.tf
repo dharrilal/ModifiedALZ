@@ -2,9 +2,9 @@
 variable "subscription_id" {
   type = string
 }
-variable "lab-name" {
+variable "app-name" {
   type        = string
-  description = "Name to be used for resources in this lab"
+  description = "Name to be used for resources in this Application"
 }
 variable "environment_tag" {
   type        = string
@@ -12,7 +12,7 @@ variable "environment_tag" {
 }
 variable "region1" {
   type        = string
-  description = "location 1 for the lab"
+  description = "location of the deployment"
 }
 
 variable "region1-vnet1-address-space" {

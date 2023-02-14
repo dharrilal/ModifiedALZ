@@ -14,8 +14,6 @@ terraform {
 }
 # Features
 provider "azurerm" {
-  features {
-    key_vault {}
+  features {}
     subscription_id = var.subscription_id
-  }
 }

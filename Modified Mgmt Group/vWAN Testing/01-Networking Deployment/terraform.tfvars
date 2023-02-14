@@ -1,5 +1,5 @@
 # Core Variables
-app-name                  = "prod-spoke"
+app-name                  = "oag-prod"
 environment_tag           = "prod"
 region1                   = "canadacentral"
 subscription_id           = ""

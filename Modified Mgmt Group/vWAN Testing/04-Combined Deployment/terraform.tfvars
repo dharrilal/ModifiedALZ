@@ -2,8 +2,8 @@
 app-name                  = "oag-prod"
 environment_tag           = "prod"
 region1                   = "canadacentral"
-subscription_id_hub       = ""
-subscription_id_spoke     = ""
+subscription_id_hub       = "4dfb599e-8459-4600-86a9-a19faa01ad6d"
+subscription_id_spoke     = "07e2424a-029a-4ae7-b114-d91306b23f5b"
 
 # Spoke Networking
 region1-vnet1-address-space = "10.10.8.0/21"

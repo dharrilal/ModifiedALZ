@@ -1,7 +1,7 @@
 # Virtual Machines
 #Public IPs
 resource "azurerm_public_ip" "region1-vm01-pip" {
-  alias               = "spoke-sub"
+  provider            = azurerm.spoke-sub
   name                = "pip-vm01-${var.region1}-001"
   resource_group_name = azurerm_resource_group.vm-rg1.name
   location            = var.region1
@@ -15,7 +15,7 @@ resource "azurerm_public_ip" "region1-vm01-pip" {
 
 #Create NICs and associate the Public IPs
 resource "azurerm_network_interface" "region1-vm01-nic" {
-  alias               = "spoke-sub"
+  provider            = azurerm.spoke-sub
   name                = "nic-vm01-${var.region1}-001"
   location            = var.region1
   resource_group_name = azurerm_resource_group.vm-rg1.name
@@ -34,7 +34,7 @@ resource "azurerm_network_interface" "region1-vm01-nic" {
 }
 #Create VMs
 resource "azurerm_windows_virtual_machine" "region1-vm01" {
-  alias               = "spoke-sub"
+  provider            = azurerm.spoke-sub
   name                = "vm01${var.vmfunc}"
   resource_group_name = azurerm_resource_group.vm-rg1.name
   location            = var.region1
@@ -64,7 +64,7 @@ resource "azurerm_windows_virtual_machine" "region1-vm01" {
 
 # Setup Scripts for Apps and Windows Firewall
 resource "azurerm_virtual_machine_extension" "region1-vm01-vmsetup" {
-  alias                = "spoke-sub"
+  provider             = azurerm.spoke-sub
   name                 = "vm01-vmsetup-001"
   virtual_machine_id   = azurerm_windows_virtual_machine.region1-vm01.id
   publisher            = "Microsoft.Compute"

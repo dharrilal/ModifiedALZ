@@ -80,7 +80,7 @@ resource "azurerm_virtual_machine_extension" "region1-vm01-vmsetup" {
   settings = <<SETTINGS
     {
         "fileUris": [
-          "https://raw.githubusercontent.com/jakewalsh90/Terraform-Azure/main/PowerShell/standard_VMSetup.ps1"
+          "https://raw.githubusercontent.com/dharrilal/AzurevWAN/main/Scripts/Powershell/standard_VMSetup.ps1"
         ]
     }
   SETTINGS
